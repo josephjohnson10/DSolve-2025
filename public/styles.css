@@ -5,10 +5,6 @@ body {
     padding: 20px;
 }
 
-h1, h2 {
-    color: #333;
-}
-
 input, select, button {
     margin: 10px;
     padding: 10px;
@@ -22,23 +18,3 @@ button {
     border: none;
     cursor: pointer;
 }
-
-button:hover {
-    background-color: #0056b3;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background: white;
-    margin: 10px auto;
-    padding: 10px;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-}
-
