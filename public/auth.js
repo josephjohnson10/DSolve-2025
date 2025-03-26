@@ -1,4 +1,4 @@
-const API_URL = "https://localhost:5000";
+const API_URL = "";
 
 function showRegister() {
     document.getElementById("auth").style.display = "none";
