@@ -1,4 +1,4 @@
-const API_URL = "https://findo-backend.onrender.com";
+const API_URL = "https://localhost:5000";
 
 function showRegister() {
     document.getElementById("auth").style.display = "none";
