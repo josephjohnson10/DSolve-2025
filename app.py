@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, send_file
 from flask_cors import CORS
 import sqlite3
 import bcrypt
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='public')
 app.secret_key = "findo_secret_key"
 CORS(app, supports_credentials=True)
 
@@ -20,6 +20,11 @@ def init_db():
         conn.commit()
 
 init_db()
+
+@app.route("/", methods=["GET"])
+def home_page():
+    print("HEllo")
+    return send_file("public/index.html")
 
 # User Registration
 @app.route("/register", methods=["POST"])
