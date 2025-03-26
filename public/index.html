@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindO - Lost & Found</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>FindO - Lost & Found</h1>
+
+    <h2>Report a Lost or Found Item</h2>
+    <input type="text" id="itemName" placeholder="Item Name">
+    <input type="text" id="itemLocation" placeholder="Location">
+    <select id="itemStatus">
+        <option value="lost">Lost</option>
+        <option value="found">Found</option>
+    </select>
+    <button onclick="addItem()">Submit</button>
+
+    <h2>Lost & Found Items</h2>
+    <button onclick="fetchItems()">Refresh List</button>
+    <ul id="itemsList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
