@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <title>FindO - Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+
+    <script src="{{ url_for('static', filename= 'auth.js') }}"></script>
 </head>
 <body>
     <h1>FindO - Lost & Found</h1>
@@ -23,7 +25,5 @@
         <button onclick="register()">Register</button>
         <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
     </div>
-
-    <script src="auth.js"></script>
 </body>
 </html>

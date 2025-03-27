@@ -1,4 +1,4 @@
-const API_URL = "";
+const API_URL = "http://127.0.0.1:5000";
 
 function showRegister() {
     document.getElementById("auth").style.display = "none";
@@ -6,6 +6,7 @@ function showRegister() {
 }
 
 function showLogin() {
+    console.log('hiii')
     document.getElementById("auth").style.display = "block";
     document.getElementById("register").style.display = "none";
 }
@@ -36,7 +37,8 @@ function login() {
     }).then(res => res.json()).then(data => {
         if (data.user) {
             localStorage.setItem("user", JSON.stringify(data.user));
-            window.location.href = "dashboard.html";
+            window.location.href = "/dashboard";
+            console.log("login success")
         } else {
             alert(data.error);
         }

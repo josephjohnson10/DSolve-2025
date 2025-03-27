@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify, session, send_file
+from flask import Flask, request, jsonify, session, send_file , render_template
 from flask_cors import CORS
 import sqlite3
 import bcrypt
 
-app = Flask(__name__, static_url_path='', static_folder='public')
+app = Flask(__name__)
 app.secret_key = "findo_secret_key"
 CORS(app, supports_credentials=True)
 
@@ -24,7 +24,12 @@ init_db()
 @app.route("/", methods=["GET"])
 def home_page():
     print("HEllo")
-    return send_file("public/index.html")
+    return render_template("index.html")
+
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
 # User Registration
 @app.route("/register", methods=["POST"])
@@ -72,16 +77,16 @@ def get_items():
 # Add lost/found item
 @app.route("/add", methods=["POST"])
 def add_item():
-    if "user_id" not in session:
-        return jsonify({"error": "Unauthorized"}), 401
+    # if "user_id" not in session:
+    #     return jsonify({"error": "Unauthorized"}), 401
 
     data = request.json
     name, location, status = data["name"], data["location"], data["status"]
     
     with sqlite3.connect("findo.db") as conn:
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO items (user_id, name, location, status) VALUES (?, ?, ?, ?)",
-                       (session["user_id"], name, location, status))
+        cursor.execute(f"INSERT INTO items (user_id, name, location, status) VALUES (?, ?, ?, ?)",
+                       ( "user", name, location, status))
         conn.commit()
     
     return jsonify({"message": "Item added successfully!"}), 201
